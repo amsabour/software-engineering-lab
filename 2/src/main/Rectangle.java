@@ -18,17 +18,26 @@ public class Rectangle {
     }
 
     public void setWidth(int width) {
+        if (width <= 0) {
+            throw new RuntimeException("Width should be positive");
+        }
+
+        this.width = width;
     }
 
     public void setHeight(int height) {
+        if (height <= 0) {
+            throw new RuntimeException("Height should be positive");
+        }
 
+        this.height = height;
     }
 
     public int getWidth() {
-        return 0;
+        return width;
     }
 
     public int getHeight() {
-        return 0;
+        return height;
     }
 }

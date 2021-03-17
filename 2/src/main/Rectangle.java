@@ -16,4 +16,19 @@ public class Rectangle {
     public int computeArea() {
         return width * height;
     }
+
+    public void setWidth(int width) {
+    }
+
+    public void setHeight(int height) {
+
+    }
+
+    public int getWidth() {
+        return 0;
+    }
+
+    public int getHeight() {
+        return 0;
+    }
 }

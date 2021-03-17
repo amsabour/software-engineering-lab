@@ -85,7 +85,9 @@ public class RectangleTest {
         for (int i = 0; i < 10; i++) {
             int randomWidth = random.nextInt(1000) + 1;
             rectangle.setWidth(randomWidth);
+
             assertEquals(randomWidth, rectangle.getWidth());
+            assertEquals(20, rectangle.getHeight());
         }
     }
 
@@ -120,7 +122,9 @@ public class RectangleTest {
         for (int i = 0; i < 10; i++) {
             int randomHeight = random.nextInt(1000) + 1;
             rectangle.setHeight(randomHeight);
+
             assertEquals(randomHeight, rectangle.getHeight());
+            assertEquals(10, rectangle.getWidth());
         }
     }
 

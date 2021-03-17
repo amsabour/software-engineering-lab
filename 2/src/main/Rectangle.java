@@ -13,22 +13,16 @@ public class Rectangle {
         this.height = height;
     }
 
-    public int computeArea() {
-        return width * height;
-    }
-
     public void setWidth(int width) {
-        if (width <= 0) {
-            throw new RuntimeException("Width should be positive");
-        }
+        if (width <= 0)
+            throw new RuntimeException("Width should be positive.");
 
         this.width = width;
     }
 
     public void setHeight(int height) {
-        if (height <= 0) {
-            throw new RuntimeException("Height should be positive");
-        }
+        if (height <= 0)
+            throw new RuntimeException("Height should be positive.");
 
         this.height = height;
     }
@@ -39,5 +33,9 @@ public class Rectangle {
 
     public int getHeight() {
         return height;
+    }
+
+    public int computeArea() {
+        return getWidth() * getHeight();
     }
 }

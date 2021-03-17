@@ -1,6 +1,7 @@
 package test;
 
 import main.Rectangle;
+import main.Shape;
 import org.junit.Test;
 
 import java.util.Random;
@@ -37,19 +38,19 @@ public class RectangleTest {
 
     @Test
     public void testComputeArea_WHEN_widthIsLarger() {
-        Rectangle rectangle = new Rectangle(20, 11);
+        Shape rectangle = new Rectangle(20, 11);
         assertEquals(rectangle.computeArea(), 220);
     }
 
     @Test
     public void testComputeArea_WHEN_heightIsLarger() {
-        Rectangle rectangle = new Rectangle(20, 30);
+        Shape rectangle = new Rectangle(20, 30);
         assertEquals(rectangle.computeArea(), 600);
     }
 
     @Test
     public void testComputeArea_WHEN_widthEqualsHeight() {
-        Rectangle rectangle = new Rectangle(25, 25);
+        Shape rectangle = new Rectangle(25, 25);
         assertEquals(rectangle.computeArea(), 625);
     }
 
@@ -128,8 +129,8 @@ public class RectangleTest {
         Rectangle rectangle = new Rectangle(10, 20);
 
         assertEquals(200, rectangle.computeArea());
-        assertEquals(200, rectangle.computeArea());
-        assertEquals(200, rectangle.computeArea());
+        assertEquals(10, rectangle.getWidth());
+        assertEquals(20, rectangle.getHeight());
 
         Random random = new Random();
         for (int i = 0; i < 10; i++) {

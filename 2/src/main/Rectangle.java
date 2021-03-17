@@ -1,14 +1,17 @@
 package main;
 
-public class Rectangle {
+public class Rectangle extends Shape {
     private int width;
     private int height;
 
     public Rectangle(int width, int height) {
+        super();
+
         if (width <= 0)
             throw new RuntimeException("Width should be positive.");
         if (height <= 0)
             throw new RuntimeException("Height should be positive.");
+
         this.width = width;
         this.height = height;
     }

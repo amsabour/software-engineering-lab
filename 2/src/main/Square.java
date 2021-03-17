@@ -1,9 +1,11 @@
 package main;
 
-public class Square {
+public class Square extends Shape {
     private int sideLength;
 
     public Square(int sideLength) {
+        super();
+
         if (sideLength <= 0)
             throw new RuntimeException("Square side length should be positive.");
 

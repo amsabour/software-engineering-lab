@@ -1,5 +1,6 @@
 package test;
 
+import main.Shape;
 import main.Square;
 import org.junit.Test;
 
@@ -34,7 +35,7 @@ public class SquareTest {
     @Test
     public void testComputeArea_WHEN_sideLengthIsValid() {
         for (int i = 1; i <= 10; i++) {
-            Square square = new Square(i);
+            Shape square = new Square(i);
             assertEquals(i * i, square.computeArea());
         }
     }

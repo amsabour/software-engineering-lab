@@ -4,6 +4,9 @@ public class SimplePower implements PowerOperation {
     private MultiplicationOperation multOp;
 
     public SimplePower(MultiplicationOperation multOp) {
+        if (multOp == null)
+            throw new RuntimeException("MultiplicationOperation can't be null");
+
         this.multOp = multOp;
     }
 
@@ -13,6 +16,16 @@ public class SimplePower implements PowerOperation {
 
     @Override
     public int Apply(int a, int b) {
-        return 0;
+        if (b < 0)
+            throw new RuntimeException("Power exponent can't be negative");
+
+        if (a == 0)
+            return 0;
+
+        int result = 1;
+        for (int i = 0; i < b; i++) {
+            result = multOp.Apply(result, a);
+        }
+        return result;
     }
 }

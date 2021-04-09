@@ -7,6 +7,17 @@ import static org.junit.Assert.*;
 
 
 public class PowerTest {
+    private int basePower(int a, int b) {
+        if (a == 0)
+            return 0;
+        if (b == 0)
+            return 1;
+        int result = 1;
+        for (int i = 0; i < b; i++) {
+            result *= a;
+        }
+        return result;
+    }
 
     @Test
     public void testPowerCreation_WHEN_InputNotNull() {
@@ -41,7 +52,7 @@ public class PowerTest {
 
         for (int i = -10; i <= 10; i++) {
             for (int j = 0; j <= 10; j++) {
-                assertEquals((int) Math.pow(i, j), powerOp.Apply(i, j));
+                assertEquals(basePower(i, j), powerOp.Apply(i, j));
             }
         }
     }
@@ -52,7 +63,7 @@ public class PowerTest {
 
         for (int i = -10; i <= 10; i++) {
             for (int j = 0; j <= 10; j++) {
-                assertEquals((int) Math.pow(i, j), powerOp.Apply(i, j));
+                assertEquals(basePower(i, j), powerOp.Apply(i, j));
             }
         }
     }
@@ -66,8 +77,10 @@ public class PowerTest {
             assertEquals(0, simplePowerOp.Apply(0, i));
             assertEquals(0, recursivePowerOp.Apply(0, i));
 
-            assertEquals(1, simplePowerOp.Apply(i, 0));
-            assertEquals(1, recursivePowerOp.Apply(i, 0));
+            if (i > 0) {
+                assertEquals(1, simplePowerOp.Apply(i, 0));
+                assertEquals(1, recursivePowerOp.Apply(i, 0));
+            }
         }
     }
 
@@ -77,15 +90,15 @@ public class PowerTest {
         PowerOperation recursivePowerOp = new RecursivePower(new SimpleMultiplication());
 
         for (int i = -10; i <= 10; i++) {
-            for (int j = -1; j >= -10; j--) {
+            for (int j = 1; j <= 10; j++) {
                 try {
-                    simplePowerOp.Apply(i, j);
+                    simplePowerOp.Apply(i, j * -1);
                     fail();
                 } catch (RuntimeException ignored) {
 
                 }
                 try {
-                    recursivePowerOp.Apply(i, j);
+                    recursivePowerOp.Apply(i, j * -1);
                     fail();
                 } catch (RuntimeException ignored) {
 
@@ -95,26 +108,38 @@ public class PowerTest {
     }
 
     @Test
-    public void testPowerCorrectness_WHEN_SwitchMultOp() {
+    public void testPowerCorrectness_WHEN_SwitchMultOp_Simple() {
         MultiplicationOperation simpleMultOp = new SimpleMultiplication();
         MultiplicationOperation recursiveMultOp = new RecursiveMultiplication();
 
         PowerOperation simplePowerOp = new SimplePower(simpleMultOp);
-        PowerOperation recursivePowerOp = new RecursivePower(simpleMultOp);
 
-        for (int i = -10; i < 10; i++) {
+        for (int i = -10; i <= 10; i++) {
             for (int j = 0; j <= 10; j++) {
-                int result = (int) Math.pow(i, j);
+                int result = basePower(i, j);
                 simplePowerOp.SetMultOp(simpleMultOp);
-                recursivePowerOp.SetMultOp(simpleMultOp);
-
                 assertEquals(result, simplePowerOp.Apply(i, j));
-                assertEquals(result, recursivePowerOp.Apply(i, j));
 
                 simplePowerOp.SetMultOp(recursiveMultOp);
-                recursivePowerOp.SetMultOp(recursiveMultOp);
-
                 assertEquals(result, simplePowerOp.Apply(i, j));
+            }
+        }
+    }
+
+    @Test
+    public void testPowerCorrectness_WHEN_SwitchMultOp_Recursive() {
+        MultiplicationOperation simpleMultOp = new SimpleMultiplication();
+        MultiplicationOperation recursiveMultOp = new RecursiveMultiplication();
+
+        PowerOperation recursivePowerOp = new RecursivePower(simpleMultOp);
+
+        for (int i = -10; i <= 10; i++) {
+            for (int j = 0; j <= 10; j++) {
+                int result = basePower(i, j);
+                recursivePowerOp.SetMultOp(simpleMultOp);
+                assertEquals(result, recursivePowerOp.Apply(i, j));
+
+                recursivePowerOp.SetMultOp(recursiveMultOp);
                 assertEquals(result, recursivePowerOp.Apply(i, j));
             }
         }

@@ -44,7 +44,8 @@ def signup():
         return jsonify({'message': 'User {} already exists'.format(username)}), 404
 
     Users[username] = {'username': username, 'password': password}
-    token = jwt.encode({'username': username, 'exp': datetime.datetime.now() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+    token = jwt.encode({'username': username, 'exp': (datetime.datetime.now() + datetime.timedelta(minutes=30)).timestamp()},
+                       app.config['SECRET_KEY'])
     return jsonify({'token': token}), 200
 
 
@@ -57,9 +58,15 @@ def is_token_valid():
         return jsonify({'message': 'Token is missing!'}), 403
 
     try:
-        data = jwt.decode(token, app.config['SECRET_KEY'])
+        print(token, app.config['SECRET_KEY'])
+        data = jwt.decode(token, app.config['SECRET_KEY'], algorithms='HS256')
+
+        if data["exp"] < datetime.datetime.now().timestamp():
+            return jsonify({'message': 'Token has expired'}), 403
+
         return jsonify({'message': 'Token is valid'}), 200
-    except:
+    except Exception as e:
+        print(e)
         return jsonify({'message': 'Token is invalid'}), 403
 
 
@@ -69,4 +76,4 @@ def is_alive():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=9000)

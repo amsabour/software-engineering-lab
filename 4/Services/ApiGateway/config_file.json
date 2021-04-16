@@ -1,0 +1,5 @@
+{
+  "auth": "https://localhost:9000",
+  "user-management": "https://localhost:8000",
+  "profile": "https://localhost:5000"
+}

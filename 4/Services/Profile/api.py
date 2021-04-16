@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse, abort, marshal, fields
+import jwt
 
 # Initialize Flask
 app = Flask(__name__)
@@ -17,6 +18,7 @@ class UserProfile(Resource):
 	def __init__(self):
 		self.reqparse = reqparse.RequestParser()
 		self.reqparse.add_argument("description", type=str, location="json")
+		self.reqparse.add_argument("token", type=str, location="headers")
 		
 		super(UserProfile, self).__init__()
 	
@@ -36,7 +38,13 @@ class UserProfile(Resource):
 		
 	# PUT - Given a username -> update the profile
 	def put(self, username):
-		serProfile = None
+		args = self.reqparse.parse_args()
+		if args["token"] is None:
+			abort(401) # The user is unauthenticated.
+		if jwt.decode(args["token"], options={"verify_signature": False})["username"] != username:
+			abort(401) # The user is going to update someone else's profile.
+			
+		userProfile = None
 		for up in user_profiles:
 			if up['username'] == username:
 				userProfile = up
@@ -64,6 +72,7 @@ class UserProfileList(Resource):
 		self.reqparse = reqparse.RequestParser()
 		self.reqparse.add_argument("username", type=str, required=True, help="The intended username", location="json")
 		self.reqparse.add_argument("description", type=str, required=True, help="The intended user profile", location="json")
+		self.reqparse.add_argument("token", type=str, location="headers")
 		
 		
 	
@@ -75,6 +84,12 @@ class UserProfileList(Resource):
 	# Create a new user profile.
 	def post(self):
 		args = self.reqparse.parse_args()
+		if args["token"] is None:
+			abort(401) # The user is unauthenticated.
+			
+		if jwt.decode(args["token"], options={"verify_signature": False})["username"] != args["username"]:
+			abort(401) # The user is going to update someone else's profile.
+			
 		up = {
 			"username": args["username"],
 			"description": args["description"]

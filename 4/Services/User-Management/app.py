@@ -56,7 +56,7 @@ def add_user():
 
     token = request.headers.get('token')
     is_token_valid, response = verify_token(token, username)
-    if is_token_valid:
+    if not is_token_valid:
         return response
 
     if username in Users:
@@ -72,4 +72,4 @@ def is_alive():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=9000)
+    app.run(debug=True, port=8000)

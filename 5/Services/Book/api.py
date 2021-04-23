@@ -145,7 +145,7 @@ class BookSearch(Resource):
         if cat is not None:
             answer_list = []
             if cat not in categories:
-                abort(404)
+                return [], 200
             for book_id in categories[cat]:
                 if title is None or title in books[book_id]["title"]:
                     answer_list.append((book_id, books[book_id]["title"]))

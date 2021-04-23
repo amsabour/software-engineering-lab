@@ -1,0 +1,7 @@
+Flask
+pyyaml
+pyjwt
+flask-autodoc
+
+
+

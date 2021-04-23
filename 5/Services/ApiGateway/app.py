@@ -132,6 +132,30 @@ def edit_profile():
     return flaskify_response(response)
 
 
+@app.route('/get_all_users', methods=['GET'])
+@auto.doc()
+def get_all_users():
+    """
+    Gets the list of all users.
+    Works only if token matches admin token.
+    """
+    print("Im here")
+    token = request.headers.get('token')
+
+    if not check_service_alive('auth') or not check_service_alive('user-management'):
+        return jsonify({'message': 'Internal server error'}), 500
+
+    # Verify token
+    response = requests.get(service_addr['auth'] + '/is_token_valid', params={'token': token})
+    if response.status_code != 200:
+        return flaskify_response(response)
+
+    response = requests.get(service_addr['user-management'] + '/get_all_users',
+                            headers={'token': token})
+
+    return flaskify_response(response)
+
+
 @app.route('/book', methods=['POST'])
 @auto.doc()
 def create_book():

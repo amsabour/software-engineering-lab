@@ -1,8 +1,10 @@
 from flask import Flask, abort, jsonify, request, make_response
+from flask_autodoc import Autodoc
 import jwt
 import datetime
 
 app = Flask(__name__)
+auto = Autodoc(app)
 app.config['SECRET_KEY'] = 'MY_SECRET_KEY'
 
 Users = {
@@ -12,7 +14,12 @@ Users = {
 
 
 @app.route('/login', methods=['POST'])
+@auto.doc()
 def login():
+    """
+    Login user with username and password.
+    Returns json with token if successful.
+    """
     username = request.form.get('username')
     password = request.form.get('password')
     print(username, password)
@@ -31,7 +38,12 @@ def login():
 
 
 @app.route('/signup', methods=['POST'])
+@auto.doc()
 def signup():
+    """
+    Signup user with username and password.
+    Returns json with token if successful.
+    """
     username = request.form.get('username')
     password = request.form.get('password')
 
@@ -47,8 +59,13 @@ def signup():
     return jsonify({'token': token}), 200
 
 
-@app.route('/is_token_valid', methods=['GET'])  # /user/is_token_valid?token=alksjdlkasdjklsaj
+@app.route('/is_token_valid', methods=['GET'])
+@auto.doc()
 def is_token_valid():
+    """
+    Check if token is valid and hasn't been tampered with.
+    Returns status code 200 if okay and status code 403 if not.
+    """
     token = request.args.get('token')
     print(token, not token)
 
@@ -69,8 +86,18 @@ def is_token_valid():
 
 
 @app.route('/is_alive', methods=['GET'])
+@auto.doc()
 def is_alive():
+    """
+    Health check for service.
+    Returns status code 200 on success. Else, does not return anything (This should be used with a timeout).
+    """
     return jsonify({'message': 'Service is alive'}), 200
+
+
+@app.route('/documentation')
+def documentation():
+    return auto.html()
 
 
 if __name__ == '__main__':

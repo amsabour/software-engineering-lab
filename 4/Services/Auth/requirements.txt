@@ -1,0 +1,8 @@
+Flask
+connexion
+Flask-Injector
+fastavro
+pyyaml
+connexion[swagger-ui]
+pyjwt
+flask-restful

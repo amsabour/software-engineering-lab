@@ -1,0 +1,4 @@
+Flask
+pyyaml
+pyjwt
+flask-restful

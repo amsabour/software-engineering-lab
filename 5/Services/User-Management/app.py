@@ -1,9 +1,9 @@
 from flask import Flask, abort, jsonify, request, make_response
-from flask_restful import Api, Resource
+from flask_autodoc import Autodoc
 import jwt
 
 app = Flask(__name__)
-api = Api(app)
+auto = Autodoc(app)
 
 Users = {
     'admin': {'username': 'admin',
@@ -34,7 +34,12 @@ def is_token_valid(token):
 
 
 @app.route('/get_all_users', methods=['GET'])
+@auto.doc()
 def get_all_users():
+    """
+    [ADMIN ONLY]
+    Return a list of all users.
+    """
     token = request.headers.get('token')
 
     # Token Validation
@@ -51,7 +56,12 @@ def get_all_users():
 
 
 @app.route('/get_user', methods=['GET'])
+@auto.doc()
 def get_user():
+    """
+    Get the information of a user.
+    Works only if admin or token matches username.
+    """
     username = request.args.get('username')
     token = request.headers.get('token')
 
@@ -75,7 +85,13 @@ def get_user():
 
 
 @app.route('/add_user', methods=['POST'])
+@auto.doc()
 def add_user():
+    """
+    Add a new user to the database.
+    Works only if token matches username.
+    """
+
     username = request.form.get('username')
     email = request.form.get('email')
     mobile = request.form.get('mobile')
@@ -112,7 +128,11 @@ def add_user():
 
 
 @app.route('/profiles/<username>', methods=['GET'])
+@auto.doc()
 def get_profile(username):
+    """
+    Get profile of a user.
+    """
     if username not in Profiles.keys():
         return jsonify({'message': 'User {} not found'.format(username)}), 404
 
@@ -120,7 +140,13 @@ def get_profile(username):
 
 
 @app.route('/profiles/<username>', methods=['PUT'])
+@auto.doc()
 def update_profile(username):
+    """
+    Update profile of a user.
+    Works only if token matches username.
+    """
+
     description = request.json.get('description')
     token = request.headers.get('token')
 
@@ -145,8 +171,18 @@ def update_profile(username):
 
 
 @app.route('/is_alive', methods=['GET'])
+@auto.doc()
 def is_alive():
+    """
+    Health check for service.
+    Returns status code 200 on success. Else, does not return anything (This should be used with a timeout).
+    """
     return jsonify({'message': 'Service is alive'}), 200
+
+
+@app.route('/documentation')
+def documentation():
+    return auto.html()
 
 
 if __name__ == '__main__':

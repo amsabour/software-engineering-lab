@@ -1,4 +1,7 @@
 Flask
 pyyaml
 pyjwt
-flask-restful
+flask-autodoc
+
+
+

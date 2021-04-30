@@ -1,5 +1,5 @@
 from flask import Flask, abort, jsonify, request, make_response
-from flask_autodoc import Autodoc
+from flask_selfdoc import Autodoc
 import jwt
 
 app = Flask(__name__)

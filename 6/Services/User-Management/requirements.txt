@@ -1,7 +1,7 @@
 Flask
 pyyaml
 pyjwt
-flask-autodoc
+flask-selfdoc
 
 
 

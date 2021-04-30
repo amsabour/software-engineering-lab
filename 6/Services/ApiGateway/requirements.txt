@@ -2,3 +2,4 @@ Flask
 pyyaml
 pyjwt
 flask_selfdoc
+requests

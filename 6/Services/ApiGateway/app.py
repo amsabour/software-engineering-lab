@@ -11,7 +11,7 @@ import jwt
 app = Flask(__name__)
 auto = Autodoc(app)
 
-with open("C:\\Users\\Asus\\Desktop\\AZ Software Engineering\\5\\Services\\ApiGateway\\config_file.json", 'r') as f:
+with open("./config_file.json", 'r') as f:
     service_addr = json.load(f)
 
 service_strikes = {x: (0, 0) for x in service_addr.keys()}

@@ -1,0 +1,16 @@
+﻿1
+2
+**/.idea
+*******/out
+4/Services/Auth/venv
+4/Services/Auth/__pycache__
+4/Services/User-Management/venv
+4/Services/User-Management/__pycache__
+4/Services/ApiGateway/venv
+3
+4
+5/Films
+5/Part 1-5 Document.pdf
+**/__pycache__
+**/venv
+**/target

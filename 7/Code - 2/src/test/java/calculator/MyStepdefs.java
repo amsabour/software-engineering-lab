@@ -38,4 +38,9 @@ public class MyStepdefs {
     public void iDivideTheTwoValues() {
         result = calculator.divide(value1, value2);
     }
+
+    @When("^I power the two values$")
+    public void iPowerTheTwoValues() {
+        result = calculator.power(value1, value2);
+    }
 }

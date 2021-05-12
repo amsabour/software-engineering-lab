@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="16" failures="0" name="calculator.RunnerTest" time="0.004" errors="0" skipped="0">
+  <properties>
+    <property name="idea.version" value="2018.2.5"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.vm.version" value="9.0.4+11"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-9.0.4\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\University stuff\University\Term 8\AZ Software Engineering\7\Code"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\University stuff\University\Term 8\AZ Software Engineering\7\Code"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="9.0.4+11"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Asus\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA 2018.2.5\plugins\maven\lib\maven3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-9.0.4\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Python37\Scripts\;C:\Program Files\Python37\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\cygwin64\bin;d:\Program Files\Git\cmd;D:\Program Files\PuTTY\;D:\altera\13.0sp1\quartus\bin;D:\PostgreSQL\pg10\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\dotnet\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\Program Files\nodejs\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;D:\Program Files\MATLAB\R2017b\runtime\win64;D:\Program Files\MATLAB\R2017b\bin;C:\Program Files\Git LFS;D:\Miniconda3;D:\Miniconda3\Library\mingw-w64\bin;D:\Miniconda3\Library\usr\bin;D:\Miniconda3\Library\bin;D:\Miniconda3\Scripts;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Java\jdk-9\bin;d:\texlive\2017\bin\win32;C:\Program Files\Java\jdk-9.0.4\bin;C:\Program Files (x86)\Python36-32\Scripts;C:\Program Files (x86)\Python36-32;D:\PostgreSQL\pg10\bin;D:\ModelSim\modeltech64_10.5\win64;C:\modeltech64_10.5\win64;D:\altera_lite\15.1\modelsim_ase\win32aloem;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Users\Asus\AppData\Roaming\npm;C:\Users\Asus\AppData\Roaming\Python\Python37\Scripts;D:\Program files\Microsoft VS Code\bin;C:\cygwin64\bin;C:\Users\Asus\AppData\Local\GitHubDesktop\bin;C:\Program Files\Microsoft MPI\Bin;D:\altera\13.0sp1\modelsim_ase\win32aloem;."/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="53.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Asus"/>
+    <property name="user.timezone" value="Asia/Tehran"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="9"/>
+    <property name="user.name" value="Asus"/>
+    <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2018.2.5\plugins\maven\lib\maven3\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="9"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2018.2.5 test"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-9.0.4"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="9.0.4"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Program Files\JetBrains\IntelliJ IDEA 2018.2.5\plugins\maven\lib\maven3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="Scenario: add two numbers" name="Given Two input values, 1 and 2" time="0.002"/>
+  <testcase classname="Scenario: add two numbers" name="When I add the two values" time="0"/>
+  <testcase classname="Scenario: add two numbers" name="Then I expect the result 3" time="0.001"/>
+  <testcase classname="Scenario: add two numbers" name="Scenario: add two numbers" time="0.001"/>
+  <testcase classname="| 1 | 12 | 13 |" name="Given Two input values, 1 and 12" time="0"/>
+  <testcase classname="| 1 | 12 | 13 |" name="When I add the two values" time="0"/>
+  <testcase classname="| 1 | 12 | 13 |" name="Then I expect the result 13" time="0"/>
+  <testcase classname="| 1 | 12 | 13 |" name="| 1 | 12 | 13 |" time="0"/>
+  <testcase classname="| -1 | 6 | 5 |" name="Given Two input values, -1 and 6" time="0"/>
+  <testcase classname="| -1 | 6 | 5 |" name="When I add the two values" time="0"/>
+  <testcase classname="| -1 | 6 | 5 |" name="Then I expect the result 5" time="0"/>
+  <testcase classname="| -1 | 6 | 5 |" name="| -1 | 6 | 5 |" time="0"/>
+  <testcase classname="| 2 | 2 | 4 |" name="Given Two input values, 2 and 2" time="0"/>
+  <testcase classname="| 2 | 2 | 4 |" name="When I add the two values" time="0"/>
+  <testcase classname="| 2 | 2 | 4 |" name="Then I expect the result 4" time="0"/>
+  <testcase classname="| 2 | 2 | 4 |" name="| 2 | 2 | 4 |" time="0"/>
+</testsuite>

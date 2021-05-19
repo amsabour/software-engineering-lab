@@ -28,7 +28,10 @@ import usermanagement.repository.PersonRepository;
 public class MockUserServiceImplTest {
 
 	private static final String ALI = "Ali";
+	private static final String ESLAMI = "Eslami";
 	private static final String TEST_COMPANY = "Test";
+	private static final Integer TEST_UID = 10;
+
 	private Person person = new Person();
 	@Mock
 	private PersonRepository personDao;
@@ -50,15 +53,39 @@ public class MockUserServiceImplTest {
 		assertEquals(ALI, user.getFirstName());
 	}
 
-	@Test 
+	@Test
 	public void findById_not_found_default_user() {
 		doReturn(null).when(personDao).findOne( Matchers.any(Integer.class));
-		 
+
 		doReturn(user).when(transformer).toUserDomain(Matchers.any(Person.class));
-		
+
 		User default_user = testClass.findById(Integer.valueOf(1));
 		assertNotNull(default_user);
-		 
+	}
+
+	@Test
+	public void findById_old_found() {
+		doReturn(person).when(personDao).findOne(Integer.valueOf(1));
+		doReturn(user).when(transformer).toUserDomain(person);
+
+		User user = testClass.findById_old(Integer.valueOf(1));
+		assertEquals(ALI, user.getFirstName());
+	}
+
+	@Test
+	public void findById_old_not_found_default_user() {
+		doReturn(null).when(personDao).findOne( Matchers.any(Integer.class));
+
+		doReturn(user).when(transformer).toUserDomain(Matchers.any(Person.class));
+
+		boolean catchedException =  false;
+		try {
+			User default_user = testClass.findById_old(Integer.valueOf(1));
+		}catch (UserNotFoundException e){
+		    assertEquals(e.getUserId(), Integer.valueOf(1));
+			catchedException = true;
+		}
+		assertTrue(catchedException);
 	}
 
 	@Test
@@ -96,6 +123,10 @@ public class MockUserServiceImplTest {
 	@Before
 	public void setup() {
 		person.setfName(ALI);
+
 		user.setFirstName(ALI);
+		user.setLastName(ESLAMI);
+		user.setCompanyName(TEST_COMPANY);
+		user.setUserId(TEST_UID);
 	}
 }
